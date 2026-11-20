@@ -1,0 +1,5 @@
+@model GolBet.Services.DTOs.TeamFormDto
+@{ ViewData["Title"] = "Crear equipo"; }
+<h1>Crear equipo</h1>
+<form asp-action="Create" method="post"><partial name="_TeamForm" model="Model" /></form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

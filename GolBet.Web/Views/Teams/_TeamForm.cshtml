@@ -1,0 +1,31 @@
+@model GolBet.Services.DTOs.TeamFormDto
+
+<input type="hidden" asp-for="Id" />
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+<div class="mb-3">
+    <label asp-for="Name" class="form-label">Nombre del equipo</label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="City" class="form-label">Ciudad</label>
+    <input asp-for="City" class="form-control" />
+    <span asp-validation-for="City" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="CrestUrl" class="form-label">URL del escudo (opcional)</label>
+    <input asp-for="CrestUrl" class="form-control" />
+    <span asp-validation-for="CrestUrl" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="PrimaryColor" class="form-label">Color del equipo</label>
+    <input type="color" asp-for="PrimaryColor" class="form-control form-control-color" />
+    <span asp-validation-for="PrimaryColor" class="text-danger"></span>
+</div>
+
+<button type="submit" class="btn btn-success">Guardar</button>
+<a asp-action="Index" class="btn btn-secondary">Cancelar</a>

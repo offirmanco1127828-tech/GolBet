@@ -1,0 +1,44 @@
+@model GolBet.Services.DTOs.MatchResultFormDto
+@{
+    var match = ViewBag.Match as GolBet.Services.DTOs.MatchDetailDto;
+    ViewData["Title"] = "Cerrar partido";
+}
+
+<div class="container py-4" style="max-width: 540px;">
+    <h2 class="mb-3">Cerrar partido y resolver apuestas</h2>
+
+    @if (match is not null)
+    {
+        <div class="alert alert-secondary">
+            <strong>@match.HomeTeamName</strong> vs <strong>@match.AwayTeamName</strong>
+        </div>
+    }
+
+    <form asp-action="Close" method="post" class="card p-4 shadow-sm">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="MatchId" />
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-6">
+                <label asp-for="HomeGoals" class="form-label">
+                    Goles @(match?.HomeTeamName ?? "Local")
+                </label>
+                <input asp-for="HomeGoals" type="number" min="0" max="99" class="form-control form-control-lg text-center" />
+                <span asp-validation-for="HomeGoals" class="text-danger"></span>
+            </div>
+            <div class="col-6">
+                <label asp-for="AwayGoals" class="form-label">
+                    Goles @(match?.AwayTeamName ?? "Visitante")
+                </label>
+                <input asp-for="AwayGoals" type="number" min="0" max="99" class="form-control form-control-lg text-center" />
+                <span asp-validation-for="AwayGoals" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">Finalizar y liquidar apuestas</button>
+            <a asp-action="Detail" asp-route-id="@Model.MatchId" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>

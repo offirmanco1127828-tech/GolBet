@@ -1,0 +1,5 @@
+@model GolBet.Services.DTOs.MatchFormDto
+@{ ViewData["Title"] = "Editar partido"; }
+<h1>Editar partido</h1>
+<form asp-action="Edit" method="post"><partial name="_MatchForm" model="Model" /></form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
